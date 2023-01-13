@@ -1,0 +1,34 @@
+{
+  "name": "openai-sms",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prestart": "npm run build",
+    "start": "func start",
+    "test": "echo \"No tests yet...\"",
+    "lint:check": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
+    "prettier:check": "prettier --ignore-path ../.gitignore --check .",
+    "prettier:fix": "prettier --ignore-path ../.gitignore --write .",
+    "update": "npx npm-check -u"
+  },
+  "devDependencies": {
+    "@azure/functions": "^3.0.0",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.47.0",
+    "@typescript-eslint/parser": "^5.47.0",
+    "azure-functions-core-tools": "^4.x",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.2",
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {
+    "@azure/communication-sms": "^1.0.0"
+  }
+}
