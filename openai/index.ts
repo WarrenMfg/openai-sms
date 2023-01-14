@@ -19,7 +19,7 @@ const eventGridTrigger: AzureFunction = async function (
       model: 'text-davinci-003',
       prompt: eventGridEvent.data.message,
       temperature: +process.env.OPENAI_TEMPERATURE,
-      max_tokens: +process.env.MAX_TOKENS,
+      max_tokens: +process.env.OPENAI_MAX_TOKENS,
     });
 
     console.log(data.choices[0].text);
