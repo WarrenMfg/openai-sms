@@ -6,7 +6,7 @@ const sms = (message: string) =>
   smsClient.send({
     from: process.env.COMM_SERVICE,
     to: [process.env.MY_CELL],
-    message,
+    message: message.trim(),
   });
 
 export default sms;

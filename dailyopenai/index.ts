@@ -1,9 +1,6 @@
 import { AzureFunction } from '@azure/functions';
-import openai from '../src/openai';
-import sms from '../src/sms';
-
-// context: Context,
-// myTimer: any
+import openai from '../clients/openai';
+import sms from '../clients/sms';
 
 const timerTrigger: AzureFunction = async function (): Promise<void> {
   let message: string | undefined;

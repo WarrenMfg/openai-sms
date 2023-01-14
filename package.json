@@ -1,7 +1,12 @@
 {
   "name": "openai-sms",
   "version": "1.0.0",
-  "description": "",
+  "description": "Send OpenAI a text to generate a response",
+  "keywords": [
+    "OpenAI",
+    "sms",
+    "Azure"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
@@ -10,8 +15,8 @@
     "test": "echo \"No tests yet...\"",
     "lint:check": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "prettier:check": "prettier --ignore-path ../.gitignore --check .",
-    "prettier:fix": "prettier --ignore-path ../.gitignore --write .",
+    "prettier:check": "prettier --ignore-path ./.gitignore --check .",
+    "prettier:fix": "prettier --ignore-path ./.gitignore --write .",
     "update": "npx npm-check -u"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import { AzureFunction, Context } from '@azure/functions';
-import openai from '../src/openai';
-import sms from '../src/sms';
+import openai from '../clients/openai';
+import sms from '../clients/sms';
 
 const eventGridTrigger: AzureFunction = async function (
   context: Context,
@@ -9,7 +9,7 @@ const eventGridTrigger: AzureFunction = async function (
 ): Promise<void> {
   if (
     eventGridEvent.data.from !== process.env.MY_CELL ||
-    !eventGridEvent.data.message
+    !eventGridEvent.data.message.trim()
   )
     return;
 
@@ -17,7 +17,7 @@ const eventGridTrigger: AzureFunction = async function (
 
   try {
     const { data } = await openai(eventGridEvent.data.message);
-    message = data.choices[0].text.trim();
+    message = data.choices[0].text;
   } catch (error) {
     console.log(error.message, error.stack);
     return;
