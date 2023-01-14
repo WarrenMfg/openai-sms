@@ -1,9 +1,10 @@
 import { AzureFunction, Context } from '@azure/functions';
-import { Configuration, OpenAIApi } from 'openai';
-import { SmsClient } from '@azure/communication-sms';
+import openai from '../src/openai';
+import sms from '../src/sms';
 
 const eventGridTrigger: AzureFunction = async function (
   context: Context,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eventGridEvent: any
 ): Promise<void> {
   if (
@@ -12,22 +13,10 @@ const eventGridTrigger: AzureFunction = async function (
   )
     return;
 
-  const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-  });
-  const openai = new OpenAIApi(configuration);
-  const client = new SmsClient(process.env.COMM_SERVICE_CONN_STR);
-
   let message: string | undefined;
 
   try {
-    const { data } = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: eventGridEvent.data.message,
-      temperature: +process.env.OPENAI_TEMPERATURE,
-      max_tokens: +process.env.OPENAI_MAX_TOKENS,
-    });
-
+    const { data } = await openai(eventGridEvent.data.message);
     message = data.choices[0].text.trim();
   } catch (error) {
     console.log(error.message, error.stack);
@@ -35,17 +24,11 @@ const eventGridTrigger: AzureFunction = async function (
   }
 
   try {
-    await client.send({
-      from: process.env.COMM_SERVICE,
-      to: [process.env.MY_CELL],
-      message,
-    });
+    await sms(message);
   } catch (error) {
     console.log(error.message, error.stack);
     return;
   }
-
-  console.log(message);
 };
 
 export default eventGridTrigger;
