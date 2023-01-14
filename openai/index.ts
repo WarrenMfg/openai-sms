@@ -22,6 +22,8 @@ const eventGridTrigger: AzureFunction = async function (
       max_tokens: +process.env.MAX_TOKENS,
     });
 
+    console.log(data.choices[0].text);
+
     await client.send({
       from: process.env.COMM_SERVICE,
       to: [process.env.MY_CELL],
