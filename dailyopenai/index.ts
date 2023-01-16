@@ -6,7 +6,7 @@ const timerTrigger: AzureFunction = async function (): Promise<void> {
   let message: string | undefined;
 
   try {
-    const { data } = await openai(process.env.OPENAI_DAILY_PROMPT);
+    const { data } = await openai(process.env.OPENAI_DAILY_PROMPT, 1);
     message = data.choices[0].text.trim();
   } catch (error) {
     console.log(error.message, error.stack);
