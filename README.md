@@ -60,5 +60,5 @@ Our souls are lost in the machine.
 ### `dailyopenai`
 
 - [Timer Trigger](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=in-process&pivots=programming-language-javascript)
-- This endpoint is automatically invoked at 12AM, 9AM, 12PM, and 5PM (`UTC-05:00`).
+- This endpoint is automatically invoked at 12AM and 5PM (`UTC-05:00`).
 - The purpose is to automate daily motivational text messages using a static prompt.
