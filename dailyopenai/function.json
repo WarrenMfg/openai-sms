@@ -7,5 +7,6 @@
       "schedule": "0 0 5,22 * * *"
     }
   ],
-  "scriptFile": "../dist/dailyopenai/index.js"
+  "scriptFile": "../dist/dailyopenai/index.js",
+  "disabled": true
 }
