@@ -1,7 +1,7 @@
 {
   "name": "openai-sms",
   "version": "1.0.0",
-  "description": "Send OpenAI a text to generate a response",
+  "description": "Text OpenAI a prompt to generate a response",
   "keywords": [
     "OpenAI",
     "sms",
